@@ -29,8 +29,7 @@ class SinglyLinkedList<T>{
         newNode.next = cur
         this.length++
      }
-
-
+     
      insertAtIndex(value:T, index:number){
         let cur = this.head
         const newNode = {
@@ -97,7 +96,7 @@ class SinglyLinkedList<T>{
             this.length--
         
         }
-        
+
         display(){
             let arr:T[] = []
         let cur = this.head
