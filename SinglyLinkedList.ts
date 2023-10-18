@@ -29,7 +29,7 @@ class SinglyLinkedList<T>{
         newNode.next = cur
         this.length++
      }
-     
+
      insertAtIndex(value:T, index:number){
         let cur = this.head
         const newNode = {
@@ -128,5 +128,5 @@ s.display()
 console.log("************************************");
 s.insertAtEnd("End")
 s.display()
-s.deleteAtIndex2(2)
+s.deleteAtIndex(3)
 s.display()
