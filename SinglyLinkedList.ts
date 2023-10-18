@@ -12,6 +12,13 @@ class SinglyLinkedList<T>{
         this.length = 0;
      }
 
+     headELement():T{
+        return this.head?.value as T
+     }
+     tailElement():T{
+        return this.tail?.value as T
+     }
+
      insertAtHead(val:T){
      const newNode = {
             value:val
@@ -22,6 +29,23 @@ class SinglyLinkedList<T>{
         newNode.next = cur
         this.length++
      }
+
+
+     insertAtIndex(value:T, index:number){
+        let cur = this.head
+        const newNode = {
+            value:value
+        } as Nodes<T>
+
+        for(let i = 0;i<index-1; i++){
+            cur=cur!.next
+        }
+        let temp = cur?.next
+        newNode.next = temp
+        cur!.next = newNode
+        this.length++
+        console.log(cur)
+    }
 
      insertAtEnd(val:T){
          const newNode = {
@@ -36,50 +60,74 @@ class SinglyLinkedList<T>{
             }
             this.length++
             
-           
-            console.log(cur)
             for(let i =0; i<this.length-1; i++){
-                console.log(i)
                 cur = cur!.next;
             }
             cur!.next = newNode
             this.tail = newNode
         }
+        
 
-        insertAtIndex(value:T, index:number){
+        deleteAtHead():void{
+            let poppedValue = this.head?.value;
+            let cur = this.head?.next
+            this.head = cur
+            this.length--
+            console.log(poppedValue)
+        }
+
+        deleteAtTail():void{
             let cur = this.head
-            const newNode = {
-                value:value
-            } as Nodes<T>
-
-            for(let i = 0;i<index-1; i++){
-                cur=cur!.next
+            for(let i = 0; i<this.length-1;i++){
+                cur=cur?.next                
             }
-            let temp = cur?.next
-            newNode.next = temp
-            cur!.next = newNode
-            this.length++
-            console.log(cur)
+            cur!.next = null
+            this.tail = cur
+            this.length--
+        }
+
+        deleteAtIndex(index:number){
+            
+            let cur = this.head
+       
+            for(let i = 0; i<index-2;i++){
+                cur = cur?.next
+            }
+            cur!.next = cur!.next?.next
+            this.length--
+        
         }
         
         display(){
+            let arr:T[] = []
         let cur = this.head
        for(let i = 0; i<=this.length;i++){
-        console.log(cur?.value, i, this.tail)
+        arr.push(cur?.value as T)
         cur = cur?.next
        }
+       console.log(arr, "this.head:", this.head?.value, "this.tail:", this.tail?.value)
      }
-     headELement():T{
-        return this.head?.value as T
-     }
+    
 }
 
 const s = new SinglyLinkedList();
 s.insertAtEnd("AA")
 s.insertAtEnd("C")
-s.insertAtEnd("B")
+s.insertAtEnd("BF")
+s.insertAtEnd("BE")
+s.insertAtEnd("BG")
 s.insertAtHead("R")
+
 s.display()
 console.log("************************************");
 s.insertAtIndex(10,2)
+s.display()
+console.log("************************************");
+s.deleteAtHead()
+s.deleteAtTail()
+s.display()
+console.log("************************************");
+s.insertAtEnd("End")
+s.display()
+s.deleteAtIndex2(2)
 s.display()
