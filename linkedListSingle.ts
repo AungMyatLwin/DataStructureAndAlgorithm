@@ -67,7 +67,7 @@ class MyLinkedList<T extends number> {
       cur.next= tailNode
       this.tail = tailNode
   }
-
+ 
   addAtIndex(index: number, val: number): void {
     if (index < 0 || index > this.length) return;
 

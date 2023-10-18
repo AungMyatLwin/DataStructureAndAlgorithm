@@ -4,15 +4,15 @@ type Nodes<T> = {
 }
 
 class SinglyLinkedList<T>{
-     head?:Nodes<T>|null;
-     tail?:Nodes<T>|null;
-     length:number;
+     private head?:Nodes<T>|null;
+     private tail?:Nodes<T>|null;
+     private length:number;
      constructor(){
         this.head = this.tail = undefined;
         this.length = 0;
      }
 
-     insertAtHead(val:number){
+     insertAtHead(val:T){
      const newNode = {
             value:val
         } as Nodes<T>
@@ -23,7 +23,7 @@ class SinglyLinkedList<T>{
         this.length++
      }
 
-     insertAtEnd(val:number){
+     insertAtEnd(val:T){
          const newNode = {
              value:val as T,
             } as Nodes<T>
@@ -46,7 +46,7 @@ class SinglyLinkedList<T>{
             this.tail = newNode
         }
 
-        insertAtIndex(value:number, index:number){
+        insertAtIndex(value:T, index:number){
             let cur = this.head
             const newNode = {
                 value:value
@@ -69,13 +69,16 @@ class SinglyLinkedList<T>{
         cur = cur?.next
        }
      }
+     headELement():T{
+        return this.head?.value as T
+     }
 }
 
 const s = new SinglyLinkedList();
-s.insertAtEnd(4)
-s.insertAtEnd(2)
-s.insertAtEnd(3)
-s.insertAtHead(7)
+s.insertAtEnd("AA")
+s.insertAtEnd("C")
+s.insertAtEnd("B")
+s.insertAtHead("R")
 s.display()
 console.log("************************************");
 s.insertAtIndex(10,2)
