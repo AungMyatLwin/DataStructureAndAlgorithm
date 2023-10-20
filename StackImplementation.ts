@@ -37,6 +37,10 @@ class StackImpl<T>{
         return cur?.value
     }
 
+    peek():T|undefined{
+        return this.head?.value
+    }
+
     toArray(){
        let cur =  this.head
        let ar:T[]=[];
@@ -56,3 +60,4 @@ s.push(6);
 s.toArray();
 s.pop();
 s.toArray();
+console.log(s.peek())
