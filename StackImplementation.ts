@@ -1,7 +1,7 @@
 
 type StackNode<T> = {
     value:T,
-    next?: StackNode<T>
+    prev?: StackNode<T>
 }
 
 
@@ -15,26 +15,27 @@ class StackImpl<T>{
     }
 
     push(item:T){
-        let cur = this.head
-        const element = {
+        const node = {
             value:item
         } as StackNode<T>
+        this.lenght++
         if(!this.head){
-            this.head = this.tail = element
-            this.lenght++
+            this.head = node
+            return
         }
-        this.head=element
-        console.log(cur)
-        this.head.next = cur
-        this.lenght++  
+        node.prev = this.head
+        this.head = node
     }
     pop():T|undefined{
-        let cur = this.head
-        if(!this.head){
-            return undefined
+        this.lenght = Math.max(0, this.lenght-1)
+        if(this.lenght===0){
+            const cur = this.head
+            this.head = undefined
+            return cur?.value
         }
-        this.head = this.head?.next
-        return cur?.value
+        const cur = this.head as StackNode<T>
+        this.head = cur.prev
+        return cur.value
     }
 
     peek():T|undefined{
@@ -46,7 +47,7 @@ class StackImpl<T>{
        let ar:T[]=[];
        while(cur){
         ar.push(cur.value)
-        cur = cur.next
+        cur = cur.prev
        }
        console.log(ar)
     }
