@@ -3,7 +3,7 @@ type Nodes<T> = {
     next?:Nodes<T>|null
 }
 
-class SinglyLinkedList<T>{
+export class SinglyLinkedList<T>{
      private head?:Nodes<T>|null;
      private tail?:Nodes<T>|null;
      private length:number;
@@ -109,24 +109,24 @@ class SinglyLinkedList<T>{
     
 }
 
-const s = new SinglyLinkedList();
-s.insertAtEnd("AA")
-s.insertAtEnd("C")
-s.insertAtEnd("BF")
-s.insertAtEnd("BE")
-s.insertAtEnd("BG")
-s.insertAtHead("R")
+// const s = new SinglyLinkedList();
+// s.insertAtEnd("AA")
+// s.insertAtEnd("C")
+// s.insertAtEnd("BF")
+// s.insertAtEnd("BE")
+// s.insertAtEnd("BG")
+// s.insertAtHead("R")
 
-s.display()
-console.log("************************************");
-s.insertAtIndex(10,2)
-s.display()
-console.log("************************************");
-s.deleteAtHead()
-s.deleteAtTail()
-s.display()
-console.log("************************************");
-s.insertAtEnd("End")
-s.display()
-s.deleteAtIndex(3)
-s.display()
+// s.display()
+// console.log("************************************");
+// s.insertAtIndex(10,2)
+// s.display()
+// console.log("************************************");
+// s.deleteAtHead()
+// s.deleteAtTail()
+// s.display()
+// console.log("************************************");
+// s.insertAtEnd("End")
+// s.display()
+// s.deleteAtIndex(3)
+// s.display()
